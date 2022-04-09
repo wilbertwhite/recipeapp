@@ -1,0 +1,119 @@
+<html>
+
+<head></head>
+
+<body>
+    <div>
+        <form method="POST" action="/search">
+            <input type="text" name="keyword" placeholder="Search for Recipes">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    <div>
+        <div>
+            <h1>{{recipeDetails.label}}</h1>
+        </div>
+
+        <div>
+            Source: <a href="{{ recipeDetails.url }}" target="_blank">{{ recipeDetails.source }}</a>
+        </div>
+
+        <div>
+            <a><img src="{{ recipeDetails.image }}" /></a>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <h1>Browse Similar Recipes based on:</h1>
+
+    <div>
+        <div>
+            <form id="form__submit" action="{{ url_for('recommendations') }}" method="POST">
+                <a href="#" onclick="submitForm()">Meal</a>
+                <div id="id">
+                    <input name="keyword" value="{{ mealReco }}" readonly />
+                    <input name="category" value="Meal" readonly />
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <br />
+
+
+    <div>
+        <div>
+            <form id="form__submit" action="{{ url_for('recommendations') }}" method="POST">
+                <a href="#" onclick="submitForm()">Cuisine</a>
+                <div id="id">
+                    <input name="keyword" value="{{ cuisineReco }}" readonly />
+                    <input name="category" value="Cuisine" readonly />
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <br />
+
+
+    <div>
+        <div>
+            <form id="form__submit" action="{{ url_for('recommendations') }}" method="POST">
+                <a href="#" onclick="submitForm()">Ingredient</a>
+                <div id="id">
+                    <input name="keyword" value="{{ ingReco }}" readonly />
+                    <input name="category" value="Ingredient" readonly />
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <br />
+
+
+    <div>
+        <div>
+            <form id="form__submit" action="{{ url_for('recommendations') }}" method="POST">
+                <a href="#" onclick="submitForm()">Ingredient Category</a>
+                <div id="id">
+                    <input name="keyword" value="{{ ingcatReco }}" readonly />
+                    <input name="category" value="Ingredient Category" readonly />
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <br />
+
+
+    <div>
+        <div>
+            <form id="form__submit" action="{{ url_for('recommendations') }}" method="POST">
+                <a href="#" onclick="submitForm()">Health</a>
+                <div id="id">
+                    <input name="keyword" value="{{ healthReco }}" readonly />
+                    <input name="category" value="Health" readonly />
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <br />
+
+    <script>
+        const div = document.querySelectorAll("#id");
+
+        for (let i = 0; i < div.length; i++) {
+            div[i].style.visibility = 'hidden';
+        }
+
+        function submitForm() {
+            let form = document.getElementById("form__submit");
+            form.submit();
+        }
+    </script>
+
+</body>
+
+</html>
